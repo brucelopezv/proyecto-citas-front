@@ -1,0 +1,150 @@
+<div class="row text-center">
+    <div class="col-md-4">
+        <div class="btn-group">
+            <div class="btn btn-primary" mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate"
+                (viewDateChange)="closeOpenMonthViewDay()">
+                Anterior
+            </div>
+            <div class="btn btn-outline-secondary" mwlCalendarToday [(viewDate)]="viewDate">
+                Hoy
+            </div>
+            <div class="btn btn-primary" mwlCalendarNextView [view]="view" [(viewDate)]="viewDate"
+                (viewDateChange)="closeOpenMonthViewDay()">
+                Siguiente
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'es' }}</h3>
+    </div>
+</div>
+<div *ngIf="eventos.length > 0">
+    <mwl-calendar-month-view [viewDate]="viewDate" [events]="eventos" [refresh]="refresh"
+        [activeDayIsOpen]="activeDayIsOpen" (dayClicked)="dayClicked($event.day)"
+        (eventClicked)="handleEvent('Clicked', $event.event)">
+    </mwl-calendar-month-view>
+</div>
+<div class="container">
+    <div class="calendar">
+        <button class="btn" [routerLink]="['/citas/form']">Agregar Cita</button>
+    </div>
+</div>
+
+<ng-template #modalContent let-close="close">
+    <div class="modal-header">
+        <h5 class="modal-title">Cita</h5>
+        <button type="button" class="close" (click)="close()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="datos-alumno">
+            <div class="icons-info">
+                <div class="icon-box dot">
+                </div>
+            </div>
+            <div class="datos-contacto-alumno">
+                <div class="dato-alumno-item" style="flex:2; min-width:250px">
+                    <div class="dato-alumno-title">
+                        <i class="fa fa-user-o"></i>
+                    </div>
+                    <div class="dato-alumno-info">{{ modalData?.event.meta.id.cliente.nombre }} {{
+                        modalData?.event.meta.id.cliente.apellido }}</div>
+                </div>
+                <div class="dato-alumno-item" style="flex:2; min-width:250px">
+                    <div class="dato-alumno-title">
+                        <i class="fa fa-envelope-o"></i>
+                    </div>
+                    <div class="dato-alumno-info">{{ modalData?.event.meta.id.cliente.correo }}</div>
+                </div>
+                <div class="dato-alumno-item" style="flex:2; min-width:250px">
+                    <div class="dato-alumno-title">
+                        <i class="fa fa-vcard-o"></i>
+                    </div>
+                    <div class="dato-alumno-info">{{ modalData?.event.meta.id.cliente.identificacion }}</div>
+                </div>
+                <div class="dato-alumno-item" style="flex:2; min-width:250px">
+                    <div class="dato-alumno-title">
+                        <i class="fa fa-phone"></i>
+                    </div>
+                    <div class="dato-alumno-info">{{ modalData?.event.meta.id.cliente.telefono }}</div>
+                </div>
+                <div class="dato-alumno-item" style="flex:2; min-width:250px">
+                    <div class="dato-alumno-title">
+                        <i class="fa fa-user-md"></i>
+                    </div>
+                    <div class="dato-alumno-info">{{ modalData?.event.meta.id.medico.nombre }} {{
+                        modalData?.event.meta.id.medico.apellido }}</div>
+                </div>
+                <div class="dato-alumno-item" style="flex:2; min-width:250px">
+                    <div class="dato-alumno-title">
+                        <i class="fa fa-clock-o"></i>
+                    </div>
+                    <div class="dato-alumno-info">{{ modalData?.event.meta.id.horaInicio }} - {{
+                        modalData?.event.meta.id.horaFin }}</div>
+                </div>
+                <div class="dato-alumno-item" style="flex:2; min-width:250px">
+                    <div class="dato-alumno-title">
+                        <i class="fa fa-info-circle"></i>
+                    </div>
+                    <div class="dato-alumno-info">{{ modalData?.event.meta.id.servicio.nombre }}</div>
+                </div>
+                <div class="dato-alumno-item" style="flex:2; min-width:250px">
+                    <div class="dato-alumno-title">
+                        <i class="fa fa-credit-card"></i>
+                    </div>
+                    <div class="dato-alumno-info">{{ modalData?.event.meta.id.metodoPago.nombre }}</div>
+                </div>
+                <div class="dato-alumno-item" style="flex:2; min-width:250px">
+                    <div class="dato-alumno-title">
+                        <i
+                            [ngClass]="modalData?.event.meta.id.estado.descripcion === 'PENDIENTE' ? 'fa fa-clock-o' 
+                            : (modalData?.event.meta.id.estado.descripcion === 'CANCELADA' ? 'fa fa-ban' :'fa fa-check') ">
+                        </i>
+                    </div>
+                    <div class="dato-alumno-info">{{ modalData?.event.meta.id.estado.descripcion }}</div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div *ngIf="modalData?.event.meta.id.estado.descripcion === 'PENDIENTE'">
+            <button type="button" class="btn-edit btn-outline-warning"
+                (click)="update(modalData?.event.meta.id, 3); close();"
+                [routerLink]="['/citas/form', modalData?.event.meta.id.id]">
+                Cancelar
+            </button>
+
+            <button type="button" class="btn-edit btn-outline-warning"
+                (click)="update(modalData?.event.meta.id, 2); close();"
+                [routerLink]="['/citas/form', modalData?.event.meta.id.id]">
+                Completar
+            </button>
+            <button type="button" class="btn-edit btn-outline-warning" (click)="close()"
+                [routerLink]="['/citas/form', modalData?.event.meta.id.id]">
+                Editar
+            </button>
+        </div>
+
+        <button type="button" class="btn btn-outline-secondary" (click)="close()">
+            OK
+        </button>
+    </div>
+</ng-template>
+
+
+<div class="events-container" *ngIf="citasHoy?.length > 0">
+    <span class="events__title">Citas del día</span>
+    <ul class="events__list">
+        <li class="events__item" *ngFor="let cita of citasHoy">
+            <div class="events__item--left">
+                <span class="events__name">{{cita.cliente.nombre}}</span>
+                <span class="events__date">{{cita.fechaCita | date:'dd/MM/yyyy'}}</span>
+            </div>
+            <span class="events__tag">{{cita.horaInicio}} </span>
+        </li>
+
+    </ul>
+</div>
+<agenda-cita *ngIf="dateValue" [fechaCita]="dateValue"></agenda-cita>

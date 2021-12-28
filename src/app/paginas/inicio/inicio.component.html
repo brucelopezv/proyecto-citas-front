@@ -1,0 +1,32 @@
+<section class="hero">
+    <h1><span>Beauty</span>Landing Page</h1>
+    <h2>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Maecenas faucibus mollis interdum. Curabitur
+        blandit tempus porttitor.</h2>
+</section>
+<section class="section">
+    <div class="wrapper">
+        <h2 class="section__title">SOME TITLE</h2>
+        <p class="section__intro">Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Maecenas faucibus mollis
+            interdum. Curabitur blandit tempus porttitor.
+        </p>
+        <div class="box__grid">
+            <article class="box" *ngFor="let servicio of servicios">
+                <a class="box__content" [routerLink]="['/usuarios']">
+                    <i class="fa fa-lightbulb-o fa-3x"></i>
+                    <h3 class="box__title">{{servicio.nombre}}</h3>
+                    <p>Duis neque leo cursus ac libero ac imperdiet bibendum nisl mauris neque diam vulputate nem.</p>
+                    <span class="box__more">Read more
+                        <i class="fa fa-arrow-right"></i>
+                    </span>
+                </a>
+            </article>            
+        </div>
+    </div>
+</section>
+<div class="section section--cta">
+    <div class="wrapper">
+        <h2 class="section__title">SOME TITLE</h2>
+        <p class="section__intro">Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Maecenas faucibus mollis
+            interdum. Curabitur blandit tempus porttitor.</p><a class="btn" href="#">TEXT BUTTON</a>
+    </div>
+</div>

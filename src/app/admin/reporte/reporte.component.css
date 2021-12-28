@@ -1,0 +1,14 @@
+#pie-chart-parent {
+    display: grid;
+    height: 200px;
+}
+
+#bar-chart-parent {
+    display: grid;
+    height: 200px;
+}
+
+#number-chart-parent {
+    display: grid;
+    height: 200px;
+}

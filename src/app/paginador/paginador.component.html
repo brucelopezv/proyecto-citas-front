@@ -1,0 +1,29 @@
+<div class="pagination-wrapper" *ngIf="paginas?.length>0">
+    <div class="pagination">
+        <div class="prev page-numbers" [routerLink]="['/especialidades/page', 0]"
+            [ngClass]="paginador.first?'current-first':''"> Primera
+        </div>
+        <a [routerLink]="['/especialidades/page', paginador.number-1]" class="page-numbers"
+            *ngIf="paginador.number > 0">
+            &laquo;
+        </a>
+        <div class="page-numbers" *ngFor="let pagina of paginas" [routerLink]="['/especialidades/page', pagina-1]"
+            [ngClass]="pagina-1==paginador.number?'current':'enabled'">
+            <span *ngIf="pagina -1 == paginador.number">
+                {{pagina}}
+            </span>
+            <a *ngIf="pagina -1 != paginador.number">
+                {{pagina}}
+            </a>
+        </div>
+        <div [routerLink]="['/especialidades/page', paginador.number+1]" class="page-numbers"
+            *ngIf="paginador.number < paginador.totalPages-1">
+            &raquo;
+        </div>
+        <div [routerLink]="['/especialidades/page', paginador.totalPages-1]" class="next page-numbers"
+            [ngClass]="paginador.first?'current-next':''">
+            Última
+        </div>
+
+    </div>
+</div>

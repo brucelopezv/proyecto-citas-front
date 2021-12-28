@@ -1,0 +1,43 @@
+<div class="page-form well">
+    <div class="form-horizontal">
+        <form #espForm="ngForm">
+            <div class="form-group form-group-sm">
+                <label for="inputName" class="col-xs-12 col-sm-3 control-label">Nombre:</label>
+                <div class="col-xs-12 col-sm-6">
+                    <input type="text" class="form-control" [(ngModel)]="metodo.nombre" name="nombre" required
+                        minlength="2" #nombre="ngModel">
+
+                    <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                        <span *ngIf="nombre.errors.required" class="help-block">Obligatorio</span>
+                        <span *ngIf="nombre.errors.minlength" class="help-block">2 caracteres minimo</span>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="text-center buttons col-md-12 col-xs-3">
+                            <button class="btn btn-success btn-rounded btn-save" role="button" (click)="create()"
+                                [disabled]="!espForm.form.valid" *ngIf="!metodo.id else elseBlock">
+                                Crear
+                            </button>
+                            <ng-template #elseBlock>
+                                <button class="btn btn-info btn-rounded btn-edit" role="button" (click)="update()"
+                                    [disabled]="!espForm.form.valid">
+                                    Editar
+                                </button>
+                            </ng-template>
+                            <input type="button" class="btn btn-next btn-fill btn-danger btn-cancel"
+                                [routerLink]="['/metodos']" name='next' value='Cancelar' />
+                        </div>
+                        <div class="text-center">
+
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>

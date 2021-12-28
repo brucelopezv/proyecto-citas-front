@@ -1,0 +1,16 @@
+.mat-datepicker-toggle {
+    color: black;
+}
+
+::ng-deep .datepickerTwo {
+    background: rgb(96, 185, 117);
+}
+
+::ng-deep .datepickerTwo .mat-calendar-body-today:not(.mat-calendar-body-selected) {
+    border-color: rgb(1, 59, 10);
+}
+
+::ng-deep .datepickerTwo .mat-calendar-body-selected {
+    border-color: rgb(0, 110, 15);
+    background-color: rgb(0, 110, 15);
+}

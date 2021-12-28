@@ -1,0 +1,312 @@
+.events-container {
+	padding: 0 15px;
+}
+
+.events__title {
+	color: #bec1ca;
+	display: inline-block;
+	font-size: 14px;
+	font-weight: 600;
+	margin-bottom: 16px;
+}
+
+.events__tag {
+	background: #66dcec;
+	border: 2px solid #fefefe;
+	-moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+	-webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+	border-radius: 20px;
+	color: #fff;
+	font-size: 10px;
+	font-weight: 600;
+	width: 60px;
+	margin-left: 16px;
+	padding: 5px 2px;
+	text-align: center;
+}
+
+.events__tag--highlighted {
+	background: #fdca40;
+}
+
+.events__item {
+	background: #fff;
+	border-left: 8px solid #86d8c9;
+	border-radius: 2px;
+	-moz-box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.05);
+	-webkit-box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.05);
+	box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.05);
+	padding: 15px 16px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 16px;
+}
+
+.events__item--left {
+	width: calc(100% - 76px);
+}
+
+.events__name {
+	font-size: 12px;
+	font-weight: 700;
+	color: #222741;
+	display: block;
+	margin-bottom: 6px;
+}
+
+.events__date {
+	font-size: 12px;
+	color: #9faab7;
+	display: inline-block;
+}
+
+.first-day {
+	grid-column-start: var(--first-day-start, 0);
+}
+
+/* calendario 2 */
+
+.calendar-base {
+	list-style: none;
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	margin: 0;
+	border-style: whitesmoke;
+	padding: 0;
+	width: 100%;
+	box-sizing: border-box;
+	box-shadow: inset 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
+	font-family: 'Ubuntu';
+	border-spacing: 0;
+	background-color: rgba(184, 240, 185, 0.1);
+	;
+}
+
+.day-name-calendar {
+	text-transform: uppercase;
+	font-size: 10px;
+	font-weight: 700;
+	padding: 10px 0;
+	color: rgba(0, 0, 0, 0.8);
+	background-color: #008d03;
+	letter-spacing: 1px;
+	font-weight: bold;
+	margin-bottom: 2px;
+	text-align: center;
+	list-style-position: inside;
+	border: 1px solid black;
+}
+
+li {
+	box-sizing: border-box;
+	padding: .25rem;
+	font-size: 1.5ch;
+	cursor: pointer;
+}
+
+.day-calendar-base {
+	transition: all 0.3s;
+	font-size: 14px;
+	color: rgba(0, 0, 0, 0.6);
+	font-weight: 400;
+	vertical-align: initial;
+	height: 75px;
+	letter-spacing: 1px;
+	text-align: center;
+	margin-bottom: 2px;
+	padding: 10px 0;
+	list-style-position: inside;
+}
+
+.day-calendar-base:hover {
+	font-weight: 600;
+}
+
+.today {
+	color: #FFF;
+	background-color: rgba(0, 0, 0, .25) !important;
+	transition: all 0.3s;
+	font-size: 14px;
+	font-weight: 400;
+	vertical-align: initial;
+	height: 75px;
+	letter-spacing: 1px;
+	text-align: center;
+	margin-bottom: 2px;
+	padding: 10px 0;
+	list-style-position: inside;
+}
+
+span.number {
+	margin-left: 10%
+}
+
+span.event {
+	height: 4px;
+	background-color: rgba(0, 0, 0, .3);
+	display: block;
+	margin: 5px 10%;
+	border-radius: 2px;
+	background-color: #91c33b;
+}
+
+span.event-multiday {
+	margin: 5px -2px;
+	border-radius: 0;
+}
+
+span.event-multiday-start {
+	margin-right: -4px;
+}
+
+span.event-multiday-finish {
+	margin-left: -4px;
+}
+
+span.event-ghost {
+	background-color: transparent;
+}
+
+.calendar {
+	text-align: center;
+}
+
+.calendar header {
+	position: relative;
+}
+
+.calendar h2 {
+	text-transform: uppercase;
+}
+
+.btn-prev, .btn-next {
+	border: 2px solid #cbd1d2;
+	border-radius: 20%;
+	color: #cbd1d2;
+	height: 2em;
+	font-size: .75em;
+	line-height: 2em;
+	margin: -1em;
+	position: absolute;
+	top: 50%;
+	width: 2em;
+}
+
+.btn-prev:hover, .btn-next:hover {
+	background: #cbd1d2;
+	color: #f9f9f9;
+	cursor: pointer;
+}
+
+.btn-prev {
+	left: 6em;
+}
+
+.btn-next {
+	right: 6em;
+}
+
+.btn-edit {
+	font-size: 14px;
+	margin: 2em 0.5em 1.5em 1.5em;
+	border-radius: 2em;
+	padding: 0.75em 1.5em;
+	cursor: pointer;
+	background: none;
+	color: #707c2d;
+	border: 1px solid;
+	letter-spacing: 1px;
+	font-family: 'Source Sans Pro', sans-serif;
+	color: #abc04f;
+	border: #a8c04f 1px solid;
+	transition: 250ms ease-out;
+}
+
+.btn-edit:hover, .btn-edit:focus {
+	color: #fff;
+	background: #afc04f;
+}
+
+.btn {
+	font-size: 14px;
+	margin: 2em 0.5em 1.5em 1.5em;
+	border-radius: 2em;
+	padding: 0.75em 1.5em;
+	cursor: pointer;
+	background: none;
+	color: #2d7c58;
+	border: 1px solid;
+	letter-spacing: 1px;
+	font-family: 'Source Sans Pro', sans-serif;
+	color: #4fc08d;
+	border: #4fc08d 1px solid;
+	transition: 250ms ease-out;
+}
+
+.btn:hover, .btn:focus {
+	color: #fff;
+	background: #4fc08d;
+}
+
+.datos-alumno {
+	display: flex;
+	align-items: center;
+	width: 90%;
+	margin: 20px 0px;
+	margin-left: 5%;
+	padding: 10px;
+	border-radius: 10px;
+	box-shadow: 1px 1px 8px #666;
+	background: #F5F5F5;
+}
+
+.icons-info {	
+	min-width: 30px;
+	padding: 5px;
+}
+
+.icons-info i {
+	font-size: 25px
+}
+
+.icons-info>.icon-box {
+	margin: 10px 0px;
+}
+
+.icons-info>.icon-box.dot {
+	width: 20px;
+	height: 20px;
+	background: green;
+	border-radius: 50%;
+	margin-top: 0px !important
+}
+
+.icons-info>.dot.suspended {
+	background: orange;
+}
+
+.datos-contacto-alumno {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	border-left: 2px solid #666;
+}
+
+.dato-alumno-item {
+	display: flex;
+	align-items: center;
+	padding: 5px 10px;
+	flex: 1;
+	min-width: 150px;
+}
+
+.dato-alumno-title {
+	font-weight: bold;
+	margin-right: 10px
+}
+
+.dato-alumno-title>i {
+	font-size: 25px
+}

@@ -1,0 +1,64 @@
+<div class="container">
+    <div class="table-wrapper">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-sm-6 col-xs-12">
+                    <h2>Administración de <b>Especialidades</b></h2>
+                </div>
+                <div class="col-sm-6 col-xs-12">
+                    <a [routerLink]="['/especialidades/form']" class="btn btn-success" data-toggle="modal">
+                        <i class="fa fa-plus"></i>
+                        <span>Agregar</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="especialidades?.length==0" class="alert alert-info">
+            No hay registros en la base de datos.
+        </div>
+
+        <table class="rwd-table" *ngIf="especialidades?.length>0">
+            <tbody>
+                <tr>
+                    <th>ID</th>
+                    <th>NOMBRE</th>
+                    <th>HABILITADO</th>
+                    <th>EDITAR</th>
+                    <th>ELIMINAR</th>
+                </tr>
+                <tr *ngFor="let especialidad of especialidades">
+                    <td data-th="ID">
+                        {{especialidad.id}}
+                    </td>
+                    <td data-th="NOMBRE">
+                        {{especialidad.nombre}}
+                    </td>
+
+                    <td data-th="HABILITADO">
+                        <div class="toggle-wrapper">
+                            <div class="toggle normal">
+                                <input name="id_number{{especialidad.id}}" class="check-button normal"
+                                    id="cb{{especialidad.id}}" type="checkbox" [checked]="especialidad.enabled"
+                                    (change)="onChangeEnabled($event)" [value]="especialidad.id">
+                                <label class="toggle-item" for="cb{{especialidad.id}}">
+                                </label>
+                            </div>
+                        </div>
+                    </td>
+
+                    <td data-th="EDITAR">
+                        <a class="edit" [routerLink]="['/especialidades/form', especialidad.id]">
+                            <i class="fa fa-edit" title="Editar"></i> 
+                        </a>
+                    </td>
+                    <td data-th="ELIMINAR">
+                        <a class="remove" (click)="delete(especialidad)">
+                            <i class="fa fa-remove" title="ELIMINAR"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <app-paginador *ngIf="paginador" [paginador]="paginador"></app-paginador>
+    </div>
+</div>

@@ -1,0 +1,92 @@
+.rad-body-wrapper {
+    left: 230px;
+    top: 75px;
+    width: auto;
+    right: 0;
+    transition: all 0.2s ease-in-out;
+}
+
+.rad-body-wrapper.rad-nav-min {
+    left: 50px;
+}
+
+.rad-info-box {
+    margin-bottom: 16px;
+    box-shadow: 1px 1px 2px 0 #ccc;
+    padding: 20px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .26);
+    background: white !important;
+    cursor: pointer;
+}
+
+.rad-info-box i {
+    display: block;
+    background-clip: padding-box;
+    margin-right: 15px;
+    height: 60px;
+    width: 60px;
+    border-radius: 100%;
+    line-height: 60px;
+    text-align: center;
+    font-size: 4.4em;
+    position: absolute;
+}
+
+.rad-info-box .value, .rad-info-box .heading {
+    display: block;
+    position: relative;
+    color: #515d6e;
+    text-align: right;
+    z-index: 10;
+}
+
+.rad-info-box .heading {
+    font-size: 1.2em;
+    font-weight: 300;
+}
+
+.rad-info-box .value {
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+.rad-txt-primary {
+    color: #1c7ebb;
+}
+
+.rad-bg-primary {
+    background: #1c7ebb;
+}
+
+.rad-txt-success {
+    color: #23ae89;
+}
+
+.rad-bg-success {
+    background: #23ae89;
+}
+
+.rad-txt-danger {
+    color: #e94b3b;
+}
+
+.rad-bg-danger {
+    background: #e94b3b;
+}
+
+.rad-txt-warning {
+    color: #f98e33;
+}
+
+.rad-bg-warning {
+    background: #f98e33;
+}
+
+.rad-txt-violet {
+    color: #6a55c2;
+}
+
+.rad-bg-violet {
+    background: #6a55c2;
+}

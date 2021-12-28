@@ -1,0 +1,32 @@
+<section class="wizard-section">
+    <div class="row no-gutters">
+        <div class="col-lg-6 col-md-6">
+            <div class="wizard-content-left d-flex justify-content-center align-items-center">
+                <h1>Haz tu cita</h1>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6">
+            <div class="form-wizard">
+                <form action="" method="post" role="form">
+                    <div class="form-wizard-header">
+                        <p>Llena los datos para ir al siguiente paso:</p>
+                        <ul class="list-unstyled form-wizard-steps clearfix">
+                            <ng-container *ngFor="let item of itemProgressList; index as i">
+                                <li [ngClass]="{
+                                    complete: item.status === 'completed',
+                                    active: item.status === 'in progress'}">
+                                    <span>
+                                        {{i+1}}
+                                    </span>
+                                </li>
+                            </ng-container>
+                        </ul>
+                    </div>
+                    <div class="step-content">
+                        <ng-content select="app-progreso-paso"></ng-content>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,213 @@
+<div class="page-form well">
+    <div class="form-horizontal">
+        <app-progreso #progress (stateChange)="onStateChange($event)">
+            <app-progreso-paso>
+                <form class="form-wizard" [formGroup]="fechaForm">
+                    <fieldset class="wizard-fieldset show">
+                        <h5>Selección de fecha</h5>
+                        <div class="form-group">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Escoge fecha</mat-label>
+                                <input matInput [matDatepicker]="picker" (click)="picker.open()" required
+                                    formControlName="fecha">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker panelClass="datepickerTwo"></mat-datepicker>
+                            </mat-form-field>
+                            <div *ngIf="fechaForm.getError('fecha', ['fecha']) as error">
+                                error -> {{ error }}
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <button (click)="goNext(progress)" [disabled]="!fechaForm.valid"
+                                class="form-wizard-next-btn float-right">Siguiente</button>
+                        </div>
+
+                    </fieldset>
+
+                </form>
+            </app-progreso-paso>
+            <app-progreso-paso>
+                <form class="form-wizard" [formGroup]="horasForm">
+                    <fieldset class="wizard-fieldset show">
+                        <h5>Selección de fecha</h5>
+                        <div class="form-group">
+                            <ngx-mat-timepicker-field color="warn" [format]="24" formControlName="horaInicio"
+                                [defaultTime]="'12:00'" required>
+                            </ngx-mat-timepicker-field>
+                            <ngx-mat-timepicker-field color="warn" [format]="24" formControlName="horaFin" required
+                                [defaultTime]="'12:00'">
+                            </ngx-mat-timepicker-field>
+                            <div *ngIf="horasForm.getError('horas') as error">
+                                error -> {{ error }}
+                            </div>
+                            <button class="form-wizard-previous-btn float-left" progressStepPrev>Anterior</button>
+                            <button class="form-wizard-next-btn float-right" progressStepNext
+                                [disabled]="!horasForm.valid">
+                                Siguiente
+                            </button>
+                        </div>
+                    </fieldset>
+                </form>
+            </app-progreso-paso>
+            <app-progreso-paso>
+                <h1>step 3</h1>
+
+                <form class="form-wizard" [formGroup]="infoForm">
+                    <fieldset class="wizard-fieldset show">
+                        <h5>Selección</h5>
+                        <div class="form-group">
+                            <label class="col-md-12 control-label">Medico:</label>
+                            <div class="col-md-12">
+                                <select [compareWith]="compararMedico" class="form-control" formControlName="medico"
+                                    required>
+                                    <option [ngValue]="null" disabled>
+                                        --- Seleccionar medico ---
+                                    </option>
+                                    <option *ngFor="let medico of medicos" [ngValue]="medico">
+                                        {{medico.nombre}} {{medico.apellido}}
+                                    </option>
+                                </select>
+                            </div>
+                            <div *ngIf="medicoForm.invalid && infoForm.dirty" class="error">
+                                Medico required.
+                            </div>
+                            <label class="col-md-12 control-label">Servicio:</label>
+                            <div class="col-md-12">
+                                <select [compareWith]="compararServicio" class="form-control" formControlName="servicio"
+                                    required>
+                                    <option [ngValue]="null" disabled>
+                                        --- Seleccionar servicio ---
+                                    </option>
+                                    <option *ngFor="let servicio of servicios" [ngValue]="servicio">
+                                        {{servicio.nombre}}
+                                    </option>
+                                </select>
+                            </div>
+                            <label class="col-md-12 control-label">Servicio:</label>
+                            <div class="col-md-12">
+                                <select [compareWith]="compararMetodo" class="form-control" formControlName="metodo"
+                                    required>
+                                    <option [ngValue]="null" disabled>
+                                        --- Seleccionar metodo pago ---
+                                    </option>
+                                    <option *ngFor="let metodo of metodos" [ngValue]="metodo">
+                                        {{metodo.nombre}}
+                                    </option>
+                                </select>
+                            </div>
+                            <br>
+                            <button class="form-wizard-previous-btn float-left" progressStepPrev>Anterior</button>
+                            <button class="form-wizard-next-btn float-right" progressStepNext
+                                [disabled]="!infoForm.valid">
+                                Siguiente
+                            </button>
+                        </div>
+                    </fieldset>
+                </form>
+            </app-progreso-paso>
+            <app-progreso-paso>
+                <form class="form-wizard">
+                    <fieldset class="wizard-fieldset show">
+                        <h5>step 4</h5>
+                        <label>
+                            <input type="radio" name="radio" id="existe" (change)="cambioCliente($event)" [value]="1"
+                                [checked]="isChecked" [(ngModel)]="radio" />
+                            <span>Existente</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="radio" id="nuevo" (change)="cambioCliente($event)" [value]="2"
+                                [checked]="isChecked" [(ngModel)]="radio" />
+                            <span>Nuevo</span>
+                        </label>
+                        <div *ngIf="radio == 1">
+                            <form [formGroup]="clienteSelectForm">
+                                <div class="col-md-12">
+                                    <ng-multiselect-dropdown name="cliente" [placeholder]="'Cliente'"
+                                        [settings]="dropdownSettings" [data]="clientes" formControlName="cliente">
+                                    </ng-multiselect-dropdown>
+                                </div>
+                            </form>
+                            <div class="form-group clearfix">
+                                <button class="form-wizard-previous-btn float-left" progressStepPrev>Anterior</button>
+                                <button (click)="realizaCita()" [disabled]="!clienteSelectForm.valid"
+                                    *ngIf="!cita.id else elseBlock" class="form-wizard-next-btn float-right">
+                                    Hacer cita
+                                </button>
+                                <ng-template #elseBlock>
+                                    <button class="form-wizard-next-btn float-right" role="button"
+                                        (click)="modificaCita()">
+                                        Editar
+                                    </button>
+                                </ng-template>
+                            </div>
+                        </div>
+                        <div *ngIf="radio == 2">
+                            <div class="container">
+                                <div class="row">
+                                    <form [formGroup]="clienteForm">
+                                        <div class="form-group col-md-12">
+                                            <label class="col-md-12 control-label">Nombre:</label>
+                                            <div class="col-md-12">
+                                                <input type="text" class="form-control" formControlName="nombre"
+                                                    name="nombre" required minlength="2">
+                                            </div>
+                                            <label class="col-md-3 control-label">Apellido:</label>
+                                            <div class="col-md-12">
+                                                <input type="text" class="form-control" formControlName="apellido"
+                                                    name="apellido" required minlength="2">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label class="col-md-12 control-label">Correo:</label>
+                                            <div class="col-md-12">
+                                                <input type="text" name="email" required email class="form-control"
+                                                    formControlName="correo">
+
+                                            </div>
+                                            <label class="col-md-12 control-label">Fecha:</label>
+                                            <div class="col-md-12">
+                                                <input [matDatepicker]="fecha" class="form-control"
+                                                    (click)="fecha.open()" required
+                                                    style="display: inline; width: 100px;"
+                                                    formControlName="fechaNacimiento" name="fechaNacimiento">
+                                                <mat-datepicker-toggle [for]="fecha"></mat-datepicker-toggle>
+                                                <mat-datepicker #fecha panelClass="datepickerTwo"></mat-datepicker>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label class="col-md-12 control-label">Teléfono:</label>
+                                            <div class="col-md-12">
+                                                <input type="text" class="form-control" formControlName="telefono"
+                                                    name="telefono" required minlength="2">
+                                            </div>
+                                            <label class="col-md-3 control-label">Identificación:</label>
+                                            <div class="col-md-12">
+                                                <input type="text" class="form-control" formControlName="identificacion"
+                                                    name="identificacion" required minlength="2">
+                                            </div>
+                                        </div>
+                                        <div class="form-group clearfix">
+                                            <button class="form-wizard-previous-btn float-left"
+                                                progressStepPrev>Anterior</button>
+                                            <button (click)="realizaCita()" [disabled]="!clienteForm.valid"
+                                                *ngIf="!cita.id else elseBlock"
+                                                class="form-wizard-next-btn float-right">Hacer cita
+                                            </button>
+                                            <ng-template #elseBlock>
+                                                <button class="btn btn-info btn-rounded btn-edit" role="button"
+                                                    (click)="modificaCita()">
+                                                    Editar
+                                                </button>
+                                            </ng-template>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </app-progreso-paso>
+
+        </app-progreso>
+    </div>
+</div>

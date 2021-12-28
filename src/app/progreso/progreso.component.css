@@ -1,0 +1,179 @@
+:host .step-content {
+    margin-top: 40px;
+    position: relative;
+    align-self: start;
+    grid-row: -2;
+    grid-column: -1;
+}
+
+.wizard-content-left {
+    background-blend-mode: darken;
+    background-color: rgba(0, 0, 0, 0.45);
+    /*background-image: url("https://i.ibb.co/X292hJF/form-wizard-bg-2.jpg");*/
+    background-position: center center;
+    background-size: cover;
+    padding: 30px;
+}
+
+.wizard-content-left h1 {
+    color: #ffffff;
+    font-size: 38px;
+    font-weight: 600;
+    padding: 12px 20px;
+    text-align: center;
+}
+
+.form-wizard {
+    color: #888888;
+    padding: 30px;
+}
+
+.form-wizard .form-wizard-header {
+    text-align: center;
+}
+
+.form-wizard .wizard-fieldset {
+    display: none;
+}
+
+.form-wizard .wizard-fieldset.show {
+    display: block;
+}
+
+.form-wizard .wizard-form-error {
+    display: none;
+    background-color: #d70b0b;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    width: 100%;
+}
+
+.form-wizard .form-wizard-previous-btn {
+    background-color: #fb1647;
+}
+
+.form-wizard .form-control {
+    font-weight: 300;
+    height: auto !important;
+    padding: 15px;
+    color: #888888;
+    background-color: #f1f1f1;
+    border: none;
+}
+
+.form-wizard .form-control:focus {
+    box-shadow: none;
+}
+
+.form-wizard .form-group {
+    position: relative;
+    margin: 25px 0;
+}
+
+.form-wizard .wizard-form-text-label {
+    position: absolute;
+    left: 10px;
+    top: 16px;
+    transition: 0.2s linear all;
+}
+
+.form-wizard .focus-input .wizard-form-text-label {
+    color: #d65470;
+    top: -18px;
+    transition: 0.2s linear all;
+    font-size: 12px;
+}
+
+.form-wizard .form-wizard-steps {
+    margin: 30px 0;
+}
+
+.form-wizard .form-wizard-steps li {
+    width: 25%;
+    float: left;
+    position: relative;
+}
+
+.form-wizard .form-wizard-steps li::after {
+    background-color: #f3f3f3;
+    content: "";
+    height: 5px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    border-bottom: 1px solid #dddddd;
+    border-top: 1px solid #dddddd;
+}
+
+.form-wizard .form-wizard-steps li span {
+    background-color: #dddddd;
+    border-radius: 50%;
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    position: relative;
+    text-align: center;
+    width: 40px;
+    z-index: 1;
+}
+
+.form-wizard .form-wizard-steps li:last-child::after {
+    width: 50%;
+}
+
+.form-wizard .form-wizard-steps li.active span, .form-wizard .form-wizard-steps li.complete span {
+    background-color: #33a334;
+    color: #ffffff;
+}
+
+.form-wizard .form-wizard-steps li.active::after, .form-wizard .form-wizard-steps li.complete::after {
+    background-color: #33a334;
+    left: 50%;
+    width: 50%;
+    border-color: #33a334;
+}
+
+.form-wizard .form-wizard-steps li.complete::after {
+    width: 100%;
+    border-color: #33a334;
+}
+
+.form-wizard .form-wizard-steps li:last-child::after {
+    left: 0;
+}
+
+.form-wizard .wizard-password-eye {
+    position: absolute;
+    right: 32px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+@keyframes click-radio-wave {
+    0% {
+        width: 25px;
+        height: 25px;
+        opacity: 0.35;
+        position: relative;
+    }
+    100% {
+        width: 60px;
+        height: 60px;
+        margin-left: -15px;
+        margin-top: -15px;
+        opacity: 0.0;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .wizard-content-left {
+        height: auto;
+    }
+}

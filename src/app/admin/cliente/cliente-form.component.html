@@ -1,0 +1,92 @@
+<div class="page-form well">
+    <div class="form-horizontal">
+        <form #espForm="ngForm">
+            <div class="container">
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label class="col-md-3 control-label">Nombre:</label>
+                        <div class="col-md-12">
+                            <input type="text" class="form-control" [(ngModel)]="cliente.nombre" name="nombre" required
+                                minlength="2" #nombre="ngModel">
+                            <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                                <span *ngIf="nombre.errors.required" class="help-block">Obligatorio</span>
+                                <span *ngIf="nombre.errors.minlength" class="help-block">2 caracteres minimo</span>
+                            </div>
+                        </div>
+                        <label class="col-md-3 control-label">Apellido:</label>
+                        <div class="col-md-12">
+                            <input type="text" class="form-control" [(ngModel)]="cliente.apellido" name="apellido"
+                                required minlength="2" #apellido="ngModel">
+                            <div *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)">
+                                <span *ngIf="apellido.errors.required" class="help-block">Obligatorio</span>
+                                <span *ngIf="apellido.errors.minlength" class="help-block">2 caracteres minimo</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="col-md-3 control-label">Correo:</label>
+                        <div class="col-md-12">
+                            <input type="text" name="email" required email class="form-control"
+                                [(ngModel)]="cliente.correo" #correo="ngModel">
+                            <div *ngIf="correo.invalid && (correo.dirty || correo.touched)">
+                                <span *ngIf="correo.errors.required" class="help-block">Obligatorio</span>
+                                <span *ngIf="correo.errors.email" class="help-block"> debe tener un formato
+                                    valido</span>
+                            </div>
+                        </div>
+                        <label class="col-md-3 control-label">Fecha:</label>
+                        <div class="col-md-12">
+                            <input [matDatepicker]="fecha" class="form-control" style="display: inline; width: 100px;"
+                                [(ngModel)]="cliente.fechaNacimiento" name="fechaNacimiento">
+                            <mat-datepicker-toggle [for]="fecha"></mat-datepicker-toggle>
+                            <mat-datepicker #fecha panelClass="datepickerTwo"></mat-datepicker>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="col-md-3 control-label">Teléfono:</label>
+                        <div class="col-md-12">
+                            <input type="text" name="telefono" required class="form-control"
+                                [(ngModel)]="cliente.telefono" #telefono="ngModel">
+                            <div *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)">
+                                <span *ngIf="telefono.errors.required" class="help-block">Obligatorio</span>
+                            </div>
+                        </div>
+                        <label class="col-md-3 control-label">Identificación:</label>
+                        <div class="col-md-12">
+                            <input type="text" name="identificacion" required class="form-control"
+                                [(ngModel)]="cliente.identificacion" #identificacion="ngModel">
+                            <div *ngIf="identificacion.invalid && (identificacion.dirty || identificacion.touched)">
+                                <span *ngIf="identificacion.errors.required" class="help-block">Obligatorio</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="text-center buttons col-md-12 col-xs-3">
+                            <button class="btn btn-success btn-rounded btn-save" role="button" (click)="create()"
+                                [disabled]="!espForm.form.valid" *ngIf="!cliente.id else elseBlock">
+                                Crear
+                            </button>
+                            <ng-template #elseBlock>
+                                <button class="btn btn-info btn-rounded btn-edit" role="button" (click)="update()"
+                                    [disabled]="!espForm.form.valid">
+                                    Editar
+                                </button>
+                            </ng-template>
+                            <input type='button' class='btn btn-next btn-fill btn-danger btn-cancel'
+                                [routerLink]="['/clientes']" name='next' value='Cancelar' />
+                        </div>
+                        <div class="text-center">
+
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>

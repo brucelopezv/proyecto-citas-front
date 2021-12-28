@@ -1,0 +1,62 @@
+<div class="container">
+    <div class="table-wrapper">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-sm-6 col-xs-12">
+                    <h2>Administración de <b>Metodos de pago</b></h2>
+                </div>
+                <div class="col-sm-6 col-xs-12">
+                    <a [routerLink]="['/metodos/form']" class="btn btn-success" data-toggle="modal">
+                        <i class="fa fa-plus"></i>
+                        <span>Agregar</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="metodos?.length==0" class="alert alert-info">
+            No hay registros en la base de datos.
+        </div>
+        <table class="rwd-table" *ngIf="metodos?.length>0">
+            <tbody>
+                <tr>
+                    <th>ID</th>
+                    <th>NOMBRE</th>
+                    <th>HABILITADO</th>
+                    <th>EDITAR</th>
+                    <th>ELIMINAR</th>
+                </tr>
+                <tr *ngFor="let metodo of metodos">
+                    <td data-th="ID">
+                        {{metodo.id}}
+                    </td>
+                    <td data-th="NOMBRE">
+                        {{metodo.nombre}}
+                    </td>
+
+                    <td data-th="HABILITADO">
+                        <div class="toggle-wrapper">
+                            <div class="toggle normal">
+                                <input name="id_number{{metodo.id}}" class="check-button normal"
+                                    id="cb{{metodo.id}}" type="checkbox" [checked]="metodo.enabled"
+                                    (change)="onChangeEnabled($event)" [value]="metodo.id">
+                                <label class="toggle-item" for="cb{{metodo.id}}">
+                                </label>
+                            </div>
+                        </div>
+                    </td>
+                    <td data-th="EDITAR">
+                        <a class="edit" [routerLink]="['/metodos/form', metodo.id]">
+                            <i class="fa fa-edit" title="Editar"></i>
+                        </a>
+                    </td>
+                    <td data-th="ELIMINAR">
+                        <a class="remove" (click)="delete(metodo)">
+                            <i class="fa fa-remove" title="ELIMINAR"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <app-paginador *ngIf="paginador" [paginador]="paginador"></app-paginador>
+    </div>
+</div>
