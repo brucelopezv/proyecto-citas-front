@@ -17,7 +17,7 @@
     </button>
 </div>
 
-<div  id="bar-chart-parent" class="cointainer" *ngIf="medData.length>0">
+<div id="bar-chart-parent" class="cointainer" *ngIf="medData.length>0">
     <ngx-charts-bar-vertical [results]="medData" [xAxisLabel]="'Medicos'" [legendTitle]="'Citas por doctores'"
         [yAxisLabel]="'Cantidad'" [legend]="true" [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxis]="true"
         [yAxis]="true" [gradient]="true">
@@ -25,11 +25,11 @@
 </div>
 
 <div id="pie-chart-parent" class="cointainer" *ngIf="servData.length>0">
-    <ngx-charts-pie-chart [results]="servData" [legend]="true" [legendTitle]="'Citas por Servicios'" >
+    <ngx-charts-pie-chart [results]="servData" [legend]="true" [legendTitle]="'Citas por Servicios'">
     </ngx-charts-pie-chart>
 </div>
 
-<div  id="number-chart-parent" class="cointainer" *ngIf="estData.length>0">
+<div id="number-chart-parent" class="cointainer" *ngIf="estData.length>0">
     <h1>
         Estados de citas
     </h1>

@@ -17,5 +17,6 @@ export class Cita {
     usuario: Usuario;
     metodoPago: MetodoPago;
     estado: Estado;
+    precio: number;
 
 }

@@ -224,6 +224,27 @@ span.event-ghost {
 	transition: 250ms ease-out;
 }
 
+.btn-delete {
+	font-size: 14px;
+	margin: 2em 0.5em 1.5em 1.5em;
+	border-radius: 2em;
+	padding: 0.75em 1.5em;
+	cursor: pointer;
+	background: none;
+	color: #7c2d2d;
+	border: 1px solid;
+	letter-spacing: 1px;
+	font-family: 'Source Sans Pro', sans-serif;
+	color: #c04f4f;
+	border: #c04f4f 1px solid;
+	transition: 250ms ease-out;
+}
+
+.btn-delete:hover, .btn-edit:focus {
+	color: #fff;
+	background: #c04f4f;
+}
+
 .btn-edit:hover, .btn-edit:focus {
 	color: #fff;
 	background: #afc04f;

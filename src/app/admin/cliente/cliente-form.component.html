@@ -53,11 +53,8 @@
                         </div>
                         <label class="col-md-3 control-label">Identificación:</label>
                         <div class="col-md-12">
-                            <input type="text" name="identificacion" required class="form-control"
-                                [(ngModel)]="cliente.identificacion" #identificacion="ngModel">
-                            <div *ngIf="identificacion.invalid && (identificacion.dirty || identificacion.touched)">
-                                <span *ngIf="identificacion.errors.required" class="help-block">Obligatorio</span>
-                            </div>
+                            <input type="text" name="identificacion" class="form-control"
+                                [(ngModel)]="cliente.identificacion">
                         </div>
                     </div>
                 </div>

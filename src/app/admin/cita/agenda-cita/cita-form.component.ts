@@ -98,7 +98,7 @@ export class CitaFormComponent implements OnInit, AfterViewInit {
       correo: new FormControl('', Validators.required),
       fechaNacimiento: new FormControl('', Validators.required),
       telefono: new FormControl('', Validators.required),
-      identificacion: new FormControl('', Validators.required),
+      identificacion: new FormControl('')
     })
     this.clienteSelectForm = new FormGroup({
       cliente: new FormControl(null, Validators.required)
@@ -172,6 +172,7 @@ export class CitaFormComponent implements OnInit, AfterViewInit {
       this.cliente.correo = this.clienteForm.get('correo').value;
       this.cliente.fechaNacimiento = this.clienteForm.get('fechaNacimiento').value;
       this.cliente.telefono = this.clienteForm.get('telefono').value;
+
       this.cliente.identificacion = this.clienteForm.get('identificacion').value;
       this.cliService.create(this.cliente).subscribe(
         cliente => {
@@ -283,7 +284,9 @@ export class CitaFormComponent implements OnInit, AfterViewInit {
       this.cliente.correo = this.clienteForm.get('correo').value;
       this.cliente.fechaNacimiento = this.clienteForm.get('fechaNacimiento').value;
       this.cliente.telefono = this.clienteForm.get('telefono').value;
-      this.cliente.identificacion = this.clienteForm.get('identificacion').value;
+      if ((this.clienteForm.get('identificacion').value as string)?.trim() !== '') {
+        this.cliente.identificacion = this.clienteForm.get('identificacion').value;
+      }
       this.cliService.create(this.cliente).subscribe(
         cliente => {
           this.cita.cliente = cliente;

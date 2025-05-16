@@ -18,8 +18,13 @@
         <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'es' }}</h3>
     </div>
 </div>
+<div class="row">
+    <div class="col-md-12">
+        <input type="text" class="form-control" [(ngModel)]="filteredString" />
+    </div>
+</div>
 <div *ngIf="eventos.length > 0">
-    <mwl-calendar-month-view [viewDate]="viewDate" [events]="eventos" [refresh]="refresh"
+    <mwl-calendar-month-view [viewDate]="viewDate" [events]="eventos | filter:filteredString" [refresh]="refresh"
         [activeDayIsOpen]="activeDayIsOpen" (dayClicked)="dayClicked($event.day)"
         (eventClicked)="handleEvent('Clicked', $event.event)">
     </mwl-calendar-month-view>
@@ -32,9 +37,9 @@
 
 <ng-template #modalContent let-close="close">
     <div class="modal-header">
-        <h5 class="modal-title">Cita</h5>
-        <button type="button" class="close" (click)="close()">
-            <span aria-hidden="true">&times;</span>
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="btn-close" (click)="close()">
+
         </button>
     </div>
     <div class="modal-body">
@@ -110,14 +115,14 @@
     </div>
     <div class="modal-footer">
         <div *ngIf="modalData?.event.meta.id.estado.descripcion === 'PENDIENTE'">
-            <button type="button" class="btn-edit btn-outline-warning"
+            <button type="button" class="btn-delete btn-outline-warning"
                 (click)="update(modalData?.event.meta.id, 3); close();"
                 [routerLink]="['/citas/form', modalData?.event.meta.id.id]">
                 Cancelar
             </button>
 
-            <button type="button" class="btn-edit btn-outline-warning"
-                (click)="update(modalData?.event.meta.id, 2); close();"
+            <button type="button" class="btn btn-outline-secondary"
+                (click)="update2(modalData?.event.meta.id, 2); close();"
                 [routerLink]="['/citas/form', modalData?.event.meta.id.id]">
                 Completar
             </button>
@@ -126,10 +131,6 @@
                 Editar
             </button>
         </div>
-
-        <button type="button" class="btn btn-outline-secondary" (click)="close()">
-            OK
-        </button>
     </div>
 </ng-template>
 

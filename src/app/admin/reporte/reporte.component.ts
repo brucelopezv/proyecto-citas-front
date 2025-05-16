@@ -38,8 +38,8 @@ export class ReporteComponent implements OnInit {
     if (!this.isEmpty(this.fin) && !this.isEmpty(this.inicio)) {
       const fechaInicio = new Date(this.inicio);
       const fechaFin = new Date(this.fin);
-      const fechaFinF = this.pipe.transform(fechaFin, 'dd-MM-YYYY');
-      const fechaInicioF = this.pipe.transform(fechaInicio, 'dd-MM-YYYY');
+      const fechaFinF = this.pipe.transform(fechaFin, 'dd-MM-yyyy');
+      const fechaInicioF = this.pipe.transform(fechaInicio, 'dd-MM-yyyy');
       if (fechaFin >= fechaInicio) {
         this.getCitasReporteMedicos(fechaInicioF, fechaFinF);
         this.getCitasReporteServicios(fechaInicioF, fechaFinF);

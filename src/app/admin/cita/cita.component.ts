@@ -88,7 +88,7 @@ export class CitaComponent implements OnInit {
   actualMonth: any;
   fechaActual: any;
   pipe = new DatePipe('es-GT'); // Use your own locale
-
+  filteredString: string = '';
 
   constructor(
     private modalaService: NgbModal,
@@ -140,14 +140,52 @@ export class CitaComponent implements OnInit {
     })
   }
 
+  update2(cita: Cita, estado) {
+    var es = '';
+    swal.fire({
+      title: 'Por favor confirme el precio',
+      input: 'text',
+      html:
+      '<input id="swal-input1" class="swal2-input">' +
+      '<input id="swal-input2" class="swal2-input">',
+      inputAttributes: {
+        autocapitalize: 'off'
+      },
+      showCancelButton: true,
+      confirmButtonText: 'Completar',
+      showLoaderOnConfirm: true,
+      preConfirm: (precio) => {
+        if (estado == 2) {
+          cita.estado = { id: 2, descripcion: 'COMPLETADA' }
+          es = 'completada';
+        }
+        if (estado == 3) {
+          cita.estado = { id: 3, descripcion: 'CANCELADA' }
+          es = 'cancelada';
+        }
+        cita.precio = precio;
+      },
+      allowOutsideClick: () => !swal.isLoading()
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.citaService.update(cita).subscribe(
+          cita => {
+            this.router.navigate(['/citas']);
+            swal.fire('Registro Actualizado', `La cita de: ${cita.cliente.nombre} ha sido ${es} con exito`, 'success');
+          }
+        );
+      }
+    })
+  }
+
   update(cita: Cita, estado) {
     var es = '';
-    if (estado == 2) {      
+    if (estado == 2) {
       cita.estado = { id: 2, descripcion: 'COMPLETADA' }
       es = 'completada';
 
     }
-    if (estado == 3) {      
+    if (estado == 3) {
       cita.estado = { id: 3, descripcion: 'CANCELADA' }
       es = 'cancelada';
     }

@@ -50,6 +50,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { DetalleComponent } from './admin/cliente/detalle/detalle.component';
 import { ReporteComponent } from './admin/reporte/reporte.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { FilterPipe } from './Pipes/filter.pipe';
 
 
 registerLocaleData(localeES, 'es');
@@ -120,6 +121,7 @@ export const DD_MM_YYYY_Format = {
     ProgresoPasoDirective,
     DetalleComponent,
     ReporteComponent,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,
