@@ -7,9 +7,10 @@ import { Router } from '@angular/router';
 
 
 @Component({
-  selector: 'app-usuarios',
-  templateUrl: './usuarios.component.html',
-  styleUrls: ['./usuarios.component.css']
+    selector: 'app-usuarios',
+    templateUrl: './usuarios.component.html',
+    styleUrls: ['./usuarios.component.css'],
+    standalone: false
 })
 export class UsuariosComponent implements OnInit {
 

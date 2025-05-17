@@ -2,7 +2,8 @@ import { Directive, ElementRef, HostListener, Input, OnInit } from '@angular/cor
 import { ProgresoHelperService } from './progreso-helper.service';
 
 @Directive({
-  selector: '[appProgresoPaso], [progressStepNext], [progressStepPrev]'
+    selector: '[appProgresoPaso], [progressStepNext], [progressStepPrev]',
+    standalone: false
 })
 export class ProgresoPasoDirective implements OnInit {
 

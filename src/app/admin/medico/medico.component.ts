@@ -7,9 +7,10 @@ import { MedicoService } from './medico.service';
 
 import swal from 'sweetalert2';
 @Component({
-  selector: 'app-medico',
-  templateUrl: './medico.component.html',
-  styleUrls: ['./medico.component.css']
+    selector: 'app-medico',
+    templateUrl: './medico.component.html',
+    styleUrls: ['./medico.component.css'],
+    standalone: false
 })
 export class MedicoComponent implements OnInit {
 

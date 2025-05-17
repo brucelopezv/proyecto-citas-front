@@ -5,9 +5,10 @@ import { MetodoPagoService } from './metodo-pago.service';
 import swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-form-metodo',
-  templateUrl: './form-metodo.component.html',
-  styleUrls: ['./form-metodo.component.css']
+    selector: 'app-form-metodo',
+    templateUrl: './form-metodo.component.html',
+    styleUrls: ['./form-metodo.component.css'],
+    standalone: false
 })
 export class FormMetodoComponent implements OnInit {
 

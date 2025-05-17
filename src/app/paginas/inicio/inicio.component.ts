@@ -4,9 +4,10 @@ import { Servicio } from 'src/app/admin/servicio/servicio';
 import { ServicioService } from 'src/app/admin/servicio/servicio.service';
 
 @Component({
-  selector: 'app-inicio',
-  templateUrl: './inicio.component.html',
-  styleUrls: ['./inicio.component.css']
+    selector: 'app-inicio',
+    templateUrl: './inicio.component.html',
+    styleUrls: ['./inicio.component.css'],
+    standalone: false
 })
 export class InicioComponent implements OnInit {
   servicios: Servicio[];

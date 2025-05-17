@@ -8,9 +8,10 @@ import { EspecialidadService } from './especialidad.service';
 
 
 @Component({
-  selector: 'app-especialidad',
-  templateUrl: './especialidad.component.html',
-  styleUrls: ['./especialidad.component.css']
+    selector: 'app-especialidad',
+    templateUrl: './especialidad.component.html',
+    styleUrls: ['./especialidad.component.css'],
+    standalone: false
 })
 export class EspecialidadComponent implements OnInit {
 

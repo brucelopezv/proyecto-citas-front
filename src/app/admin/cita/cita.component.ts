@@ -50,9 +50,10 @@ const colors: any = {
 };
 
 @Component({
-  selector: 'app-cita',
-  templateUrl: './cita.component.html',
-  styleUrls: ['./cita.component.css'],
+    selector: 'app-cita',
+    templateUrl: './cita.component.html',
+    styleUrls: ['./cita.component.css'],
+    standalone: false
 })
 export class CitaComponent implements OnInit {
   @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any>;

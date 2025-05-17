@@ -4,9 +4,10 @@ import swal from 'sweetalert2';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-catalogos',
-  templateUrl: './catalogos.component.html',
-  styleUrls: ['./catalogos.component.css']
+    selector: 'app-catalogos',
+    templateUrl: './catalogos.component.html',
+    styleUrls: ['./catalogos.component.css'],
+    standalone: false
 })
 export class CatalogosComponent implements OnInit {
 

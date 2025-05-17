@@ -5,9 +5,10 @@ import { MetodoPagoService } from './metodo-pago.service';
 import swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-metodo-pago',
-  templateUrl: './metodo-pago.component.html',
-  styleUrls: ['./metodo-pago.component.css']
+    selector: 'app-metodo-pago',
+    templateUrl: './metodo-pago.component.html',
+    styleUrls: ['./metodo-pago.component.css'],
+    standalone: false
 })
 export class MetodoPagoComponent implements OnInit {
 

@@ -5,9 +5,10 @@ import { ServicioService } from './servicio.service';
 import swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-servicio',
-  templateUrl: './servicio.component.html',
-  styleUrls: ['./servicio.component.css']
+    selector: 'app-servicio',
+    templateUrl: './servicio.component.html',
+    styleUrls: ['./servicio.component.css'],
+    standalone: false
 })
 export class ServicioComponent implements OnInit {
   paginador: any;

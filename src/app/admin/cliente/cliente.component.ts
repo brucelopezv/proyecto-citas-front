@@ -8,9 +8,10 @@ import { ModalService } from '../cita/agenda-cita/modal.service';
 import { Cita } from '../cita/agenda-cita/cita';
 
 @Component({
-  selector: 'app-cliente',
-  templateUrl: './cliente.component.html',
-  styleUrls: ['./cliente.component.css']
+    selector: 'app-cliente',
+    templateUrl: './cliente.component.html',
+    styleUrls: ['./cliente.component.css'],
+    standalone: false
 })
 export class ClienteComponent implements OnInit {
 

@@ -8,9 +8,10 @@ import { Especialidad } from '../especialidad/especialidad';
 
 
 @Component({
-  selector: 'app-formmedico',
-  templateUrl: './formmedico.component.html',
-  styleUrls: ['./formmedico.component.css']
+    selector: 'app-formmedico',
+    templateUrl: './formmedico.component.html',
+    styleUrls: ['./formmedico.component.css'],
+    standalone: false
 })
 export class FormmedicoComponent implements OnInit {
 

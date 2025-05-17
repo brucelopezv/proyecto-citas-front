@@ -4,9 +4,10 @@ import { CitaService } from '../cita/cita.service';
 import Swal from 'sweetalert2'
 
 @Component({
-  selector: 'app-reporte',
-  templateUrl: './reporte.component.html',
-  styleUrls: ['./reporte.component.css']
+    selector: 'app-reporte',
+    templateUrl: './reporte.component.html',
+    styleUrls: ['./reporte.component.css'],
+    standalone: false
 })
 export class ReporteComponent implements OnInit {
   saleData = [

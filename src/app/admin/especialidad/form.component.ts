@@ -5,9 +5,10 @@ import { EspecialidadService } from './especialidad.service';
 import swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-form',
-  templateUrl: './form.component.html',
-  styleUrls: ['./form.component.css']
+    selector: 'app-form',
+    templateUrl: './form.component.html',
+    styleUrls: ['./form.component.css'],
+    standalone: false
 })
 export class FormComponent implements OnInit {
 

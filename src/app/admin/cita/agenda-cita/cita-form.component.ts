@@ -21,9 +21,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
-  selector: 'app-cita-form',
-  templateUrl: './cita-form.component.html',
-  styleUrls: ['./cita-form.component.css'],
+    selector: 'app-cita-form',
+    templateUrl: './cita-form.component.html',
+    styleUrls: ['./cita-form.component.css'],
+    standalone: false
 })
 
 

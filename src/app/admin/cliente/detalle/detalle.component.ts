@@ -6,9 +6,10 @@ import { Cliente } from '../cliente';
 import { ClienteService } from '../cliente.service';
 
 @Component({
-  selector: 'app-detalle',
-  templateUrl: './detalle.component.html',
-  styleUrls: ['./detalle.component.css']
+    selector: 'app-detalle',
+    templateUrl: './detalle.component.html',
+    styleUrls: ['./detalle.component.css'],
+    standalone: false
 })
 export class DetalleComponent implements OnInit {
   @Input() cliente: Cliente;

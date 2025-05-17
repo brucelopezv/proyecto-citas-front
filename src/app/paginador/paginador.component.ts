@@ -1,9 +1,10 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
-  selector: 'app-paginador',
-  templateUrl: './paginador.component.html',
-  styleUrls: ['./paginador.component.css']
+    selector: 'app-paginador',
+    templateUrl: './paginador.component.html',
+    styleUrls: ['./paginador.component.css'],
+    standalone: false
 })
 export class PaginadorComponent implements OnInit {
   @Input() paginador: any;

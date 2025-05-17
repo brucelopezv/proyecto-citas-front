@@ -4,9 +4,10 @@ import { MedicoService } from '../../medico/medico.service';
 import { ModalService } from './modal.service';
 
 @Component({
-  selector: 'agenda-cita',
-  templateUrl: './agenda-cita.component.html',
-  styleUrls: ['./agenda-cita.component.css']
+    selector: 'agenda-cita',
+    templateUrl: './agenda-cita.component.html',
+    styleUrls: ['./agenda-cita.component.css'],
+    standalone: false
 })
 export class AgendaCitaComponent implements OnInit {
   @Input() fechaCita: string;

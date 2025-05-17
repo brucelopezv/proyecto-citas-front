@@ -6,9 +6,10 @@ import { ClienteService } from './cliente.service';
 import swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-cliente-form',
-  templateUrl: './cliente-form.component.html',
-  styleUrls: ['./cliente-form.component.css']
+    selector: 'app-cliente-form',
+    templateUrl: './cliente-form.component.html',
+    styleUrls: ['./cliente-form.component.css'],
+    standalone: false
 })
 export class ClienteFormComponent implements OnInit {
 

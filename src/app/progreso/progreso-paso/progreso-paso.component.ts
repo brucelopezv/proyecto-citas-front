@@ -1,9 +1,10 @@
 import { Component, HostBinding, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-progreso-paso',
-  templateUrl: './progreso-paso.component.html',
-  styleUrls: ['./progreso-paso.component.css']
+    selector: 'app-progreso-paso',
+    templateUrl: './progreso-paso.component.html',
+    styleUrls: ['./progreso-paso.component.css'],
+    standalone: false
 })
 export class ProgresoPasoComponent implements OnInit {
 

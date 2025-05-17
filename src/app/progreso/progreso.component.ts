@@ -13,9 +13,10 @@ import { ProgresoPasoComponent } from './progreso-paso/progreso-paso.component';
 
 import { Status, UiHelper } from './uiHelper';
 @Component({
-  selector: 'app-progreso',
-  templateUrl: './progreso.component.html',
-  styleUrls: ['./progreso.component.css']
+    selector: 'app-progreso',
+    templateUrl: './progreso.component.html',
+    styleUrls: ['./progreso.component.css'],
+    standalone: false
 })
 export class ProgresoComponent extends UiHelper
   implements OnInit, AfterContentInit {
