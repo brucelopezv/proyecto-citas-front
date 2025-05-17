@@ -9,7 +9,7 @@ import { Servicio } from '../../servicio/servicio';
 import { ServicioService } from '../../servicio/servicio.service';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { ProgresoComponent } from 'src/app/progreso/progreso.component';
-import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Cita } from './cita';
 import * as moment from 'moment';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
@@ -78,30 +78,30 @@ export class CitaFormComponent implements OnInit, AfterViewInit {
       maxHeight: 100,
       searchPlaceholderText: 'Buscar'
     };
-    this.fechaForm = new FormGroup({
-      fecha: new FormControl('', [Validators.required, fechaRango])
+    this.fechaForm = new UntypedFormGroup({
+      fecha: new UntypedFormControl('', [Validators.required, fechaRango])
     });
-    this.horasForm = new FormGroup({
-      horaInicio: new FormControl('', [Validators.required]),
-      horaFin: new FormControl('', [Validators.required])
+    this.horasForm = new UntypedFormGroup({
+      horaInicio: new UntypedFormControl('', [Validators.required]),
+      horaFin: new UntypedFormControl('', [Validators.required])
     }, {
       validators: horarios
     });
-    this.infoForm = new FormGroup({
-      medico: new FormControl(null, [Validators.required]),
-      servicio: new FormControl(null, [Validators.required]),
-      metodo: new FormControl(null, [Validators.required])
+    this.infoForm = new UntypedFormGroup({
+      medico: new UntypedFormControl(null, [Validators.required]),
+      servicio: new UntypedFormControl(null, [Validators.required]),
+      metodo: new UntypedFormControl(null, [Validators.required])
     })
-    this.clienteForm = new FormGroup({
-      nombre: new FormControl('', Validators.required),
-      apellido: new FormControl('', Validators.required),
-      correo: new FormControl('', Validators.required),
-      fechaNacimiento: new FormControl('', Validators.required),
-      telefono: new FormControl('', Validators.required),
-      identificacion: new FormControl('')
+    this.clienteForm = new UntypedFormGroup({
+      nombre: new UntypedFormControl('', Validators.required),
+      apellido: new UntypedFormControl('', Validators.required),
+      correo: new UntypedFormControl('', Validators.required),
+      fechaNacimiento: new UntypedFormControl('', Validators.required),
+      telefono: new UntypedFormControl('', Validators.required),
+      identificacion: new UntypedFormControl('')
     })
-    this.clienteSelectForm = new FormGroup({
-      cliente: new FormControl(null, Validators.required)
+    this.clienteSelectForm = new UntypedFormGroup({
+      cliente: new UntypedFormControl(null, Validators.required)
     })
     this.cargarCita();
   }
@@ -345,7 +345,7 @@ function fechaRango(control: AbstractControl): { [key: string]: any } | null {
   }
 }
 
-function horarios(form: FormGroup): { [key: string]: any } | null {
+function horarios(form: UntypedFormGroup): { [key: string]: any } | null {
   var horaInicio = form.controls['horaInicio'].value;
   var horaFin = form.controls['horaFin'].value;
   if (horaInicio && horaFin) {
