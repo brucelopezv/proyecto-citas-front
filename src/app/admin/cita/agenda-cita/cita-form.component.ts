@@ -11,14 +11,12 @@ import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { ProgresoComponent } from 'src/app/progreso/progreso.component';
 import { AbstractControl, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Cita } from './cita';
-import * as moment from 'moment';
-import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import moment from 'moment';
 import { AuthService } from 'src/app/usuarios/auth.service';
 import { Usuario } from 'src/app/usuarios/usuario';
 import { CitaService } from '../cita.service';
 import swal from 'sweetalert2';
 import { ActivatedRoute, Router } from '@angular/router';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
     selector: 'app-cita-form',
